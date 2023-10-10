@@ -150,7 +150,9 @@ namespace Calculator
 
             }
             txtResult.Text = save1.ToString();
+            op = "";
             endclick = BtnClick.Equal;
+            useop = UseOp.No;
         }
 
         private void btnClear_Click(object sender, EventArgs e)

@@ -15,6 +15,7 @@ namespace Calculator
         Number,
         Op,
         Equal,
+        Dot,
         None
     }
 
@@ -22,6 +23,8 @@ namespace Calculator
     {
         Plus,
         Minus,
+        Multiply,
+        Divide,
         None
     }
 
@@ -29,23 +32,22 @@ namespace Calculator
     {
         Yes,
         No,
-        None
     }
 
     public partial class Form1 : Form
     {
-        int max = int.MaxValue;
-        int min = int.MinValue;
+        double max = double.MaxValue;
+        double min = double.MinValue;
 
-        int resultcalc = 0;
-        int save1 = 0;
-        int save2 = 0;
+        double resultcalc = 0.0;
+        double save1 = 0.0;
+        double save2 = 0.0;
 
         string op = "";
 
         BtnClick endclick = BtnClick.Number;
         OpMode mode = OpMode.None;
-        UseOp useop = UseOp.None;
+        UseOp useop = UseOp.No;
 
         public Form1()
         {
@@ -57,8 +59,7 @@ namespace Calculator
             Button btn = sender as Button;
             string txtnumber = btn.Text;
             string txt = txtResult.Text;
-            int s;
-
+            string totaltxt = txt + txtnumber;
 
             if (txt == "0" || endclick == BtnClick.Equal || endclick == BtnClick.Op)
             {
@@ -66,17 +67,16 @@ namespace Calculator
                 {
                     txtHistory.Text = "";
                 }
-                txtResult.Text = txtnumber;
+                txtResult.Text = txtnumber.ToString();
             }
             else
             {
-                if(int.TryParse(txt + txtnumber, out s) == true)
+                if (double.TryParse(txt + txtnumber, out double s) == true)
                 {
-                    if(min < s && s < max)
+                    if (min < s && s < max)
                     {
-                        txt += txtnumber;
+                        txtResult.Text = string.Format("{0:#,##0}", totaltxt);
                     }
-                    txtResult.Text = txt;
                 }
             }
             endclick = BtnClick.Number;
@@ -86,9 +86,8 @@ namespace Calculator
         {
             Button btn = sender as Button;
 
-            if(int.TryParse(txtResult.Text, out resultcalc) == false)
+            if(double.TryParse(txtResult.Text, out resultcalc) == false)
             {
-                txtResult.Text = "int 범위를 벗어남";
                 return;
             }
 
@@ -106,11 +105,11 @@ namespace Calculator
                     save1 = resultcalc;
                 }
 
-                txtHistory.Text = save1 + op;
+                txtHistory.Text = string.Format("{0:#,##0.################}{1}", save1, op);
             }
             else
             {
-                txtHistory.Text = save1 + op;
+                txtHistory.Text = string.Format("{0:#,##0.################}{1}", save1, op); ;
             }
 
             switch (op)
@@ -120,6 +119,12 @@ namespace Calculator
                     break;
                 case "-":
                     mode = OpMode.Minus;
+                    break;
+                case "×":
+                    mode = OpMode.Multiply;
+                    break;
+                case "÷":
+                    mode = OpMode.Divide;
                     break;
                 default:
                     mode = OpMode.None;
@@ -132,25 +137,34 @@ namespace Calculator
 
         private void btnEqual_Click(object sender, EventArgs e)
         {
-            resultcalc = int.Parse(txtResult.Text);
+            resultcalc = double.Parse(txtResult.Text);
             if (endclick != BtnClick.Op)
             {
-                if (useop != UseOp.Yes || endclick == BtnClick.Equal)
+                if (useop == UseOp.No && op == "")
                 {
                     save1 = resultcalc;
-                    txtHistory.Text = "=" + resultcalc;
+                    txtHistory.Text = string.Format("{0:#,##0.################}=", resultcalc);
                 }
                 else
                 {
-                    save2 = resultcalc;
+                    if (save2 == 0.0)
+                    {
+                        save2 = resultcalc;
+                    }
                     resultcalc = Calc(save1, save2, mode);
-                    txtHistory.Text = save1 + op + save2 + "=" + resultcalc;
+                    txtHistory.Text = string.Format("{0:#,##0.################}{1}{2:#,##0.################}=", save1, op, save2);
                     save1 = resultcalc;
                 }
-
             }
-            txtResult.Text = save1.ToString();
-            op = "";
+            else
+            {
+                save2 = resultcalc;
+                resultcalc = Calc(save1, save2, mode);
+                txtHistory.Text = string.Format("{0:#,##0.################}{1}{2:#,##0.################}=", save1, op, save2);
+                save1 = resultcalc;
+            }
+            txtResult.Text = string.Format("{0:#,##0.################}", save1);
+            //op = "";
             endclick = BtnClick.Equal;
             useop = UseOp.No;
         }
@@ -159,17 +173,21 @@ namespace Calculator
         {
             txtResult.Text = "0";
             txtHistory.Text = "";
-            resultcalc = 0;
-            save1 = 0;
-            save2 = 0;
+            resultcalc = 0.0;
+            save1 = 0.0;
+            save2 = 0.0;
             op = "";
             endclick = BtnClick.None;
             mode = OpMode.None;
-            useop = UseOp.None;
+            useop = UseOp.No;
         }
 
         private void btnBackSpace_Click(object sender, EventArgs e)
         {
+            if(endclick == BtnClick.Op)
+            {
+                return;
+            }
             txtResult.Text = txtResult.Text.Remove(txtResult.Text.Length - 1);
             string text = txtResult.Text;
             if (text.Length == 0 || 
@@ -181,13 +199,13 @@ namespace Calculator
 
         private void btnbtnPnN_Click(object sender, EventArgs e)
         {
-            int a = int.Parse(txtResult.Text);
-            txtResult.Text = (-a).ToString();
+            double a = double.Parse(txtResult.Text);
+            txtResult.Text = string.Format("{0:#,##0.################}", -1 * a);
         }
 
-        public int Calc(int save1, int save2, OpMode mode)
+        public double Calc(double save1, double save2, OpMode mode)
         {
-            int result;
+            double result;
             switch(mode)
             {
                 case OpMode.Plus:
@@ -195,6 +213,12 @@ namespace Calculator
                     break;
                 case OpMode.Minus:
                     result = save1 - save2;
+                    break;
+                case OpMode.Multiply:
+                    result = save1 * save2;
+                    break;
+                case OpMode.Divide:
+                    result = save1 / save2;
                     break;
                 default:
                     result = 0;
@@ -204,6 +228,27 @@ namespace Calculator
             return result;
 
 
+        }
+
+        private void btnDot_Click(object sender, EventArgs e)
+        {
+            string txt = txtResult.Text;
+            if (txt.Contains(".") && endclick == BtnClick.Equal)
+            {
+                txtResult.Text = "0.";
+                endclick = BtnClick.Dot;
+                return;
+            }
+            else if (txt.Contains(".")) 
+            {
+                endclick = BtnClick.Dot;
+                return;
+            }
+            else
+            {
+                txtResult.Text += ".";
+                endclick = BtnClick.Dot;
+            }
         }
     }
 }

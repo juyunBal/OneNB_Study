@@ -47,12 +47,15 @@ namespace Calculator
             this.btnPnN = new System.Windows.Forms.Button();
             this.txtResult = new System.Windows.Forms.TextBox();
             this.txtHistory = new System.Windows.Forms.TextBox();
+            this.btnMultiply = new System.Windows.Forms.Button();
+            this.btnDivide = new System.Windows.Forms.Button();
+            this.btnDot = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn7
             // 
             this.btn7.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn7.Location = new System.Drawing.Point(12, 252);
+            this.btn7.Location = new System.Drawing.Point(12, 351);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(70, 70);
             this.btn7.TabIndex = 0;
@@ -63,7 +66,7 @@ namespace Calculator
             // btn8
             // 
             this.btn8.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn8.Location = new System.Drawing.Point(88, 252);
+            this.btn8.Location = new System.Drawing.Point(88, 351);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(70, 70);
             this.btn8.TabIndex = 1;
@@ -74,7 +77,7 @@ namespace Calculator
             // btn9
             // 
             this.btn9.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn9.Location = new System.Drawing.Point(164, 252);
+            this.btn9.Location = new System.Drawing.Point(164, 351);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(70, 70);
             this.btn9.TabIndex = 2;
@@ -85,7 +88,7 @@ namespace Calculator
             // btn4
             // 
             this.btn4.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn4.Location = new System.Drawing.Point(12, 328);
+            this.btn4.Location = new System.Drawing.Point(12, 427);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(70, 70);
             this.btn4.TabIndex = 3;
@@ -96,7 +99,7 @@ namespace Calculator
             // btn5
             // 
             this.btn5.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn5.Location = new System.Drawing.Point(88, 328);
+            this.btn5.Location = new System.Drawing.Point(88, 427);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(70, 70);
             this.btn5.TabIndex = 4;
@@ -107,7 +110,7 @@ namespace Calculator
             // btn6
             // 
             this.btn6.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn6.Location = new System.Drawing.Point(164, 328);
+            this.btn6.Location = new System.Drawing.Point(164, 427);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(70, 70);
             this.btn6.TabIndex = 5;
@@ -118,7 +121,7 @@ namespace Calculator
             // btn1
             // 
             this.btn1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn1.Location = new System.Drawing.Point(12, 404);
+            this.btn1.Location = new System.Drawing.Point(12, 503);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(70, 70);
             this.btn1.TabIndex = 6;
@@ -129,7 +132,7 @@ namespace Calculator
             // btn2
             // 
             this.btn2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn2.Location = new System.Drawing.Point(88, 404);
+            this.btn2.Location = new System.Drawing.Point(88, 503);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(70, 70);
             this.btn2.TabIndex = 7;
@@ -140,7 +143,7 @@ namespace Calculator
             // btn3
             // 
             this.btn3.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn3.Location = new System.Drawing.Point(164, 404);
+            this.btn3.Location = new System.Drawing.Point(164, 503);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(70, 70);
             this.btn3.TabIndex = 8;
@@ -151,7 +154,7 @@ namespace Calculator
             // btn0
             // 
             this.btn0.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn0.Location = new System.Drawing.Point(88, 480);
+            this.btn0.Location = new System.Drawing.Point(88, 579);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(70, 70);
             this.btn0.TabIndex = 9;
@@ -162,7 +165,7 @@ namespace Calculator
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnClear.Location = new System.Drawing.Point(164, 176);
+            this.btnClear.Location = new System.Drawing.Point(164, 275);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(70, 70);
             this.btnClear.TabIndex = 10;
@@ -173,7 +176,7 @@ namespace Calculator
             // btnBackSpace
             // 
             this.btnBackSpace.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnBackSpace.Location = new System.Drawing.Point(240, 176);
+            this.btnBackSpace.Location = new System.Drawing.Point(240, 196);
             this.btnBackSpace.Name = "btnBackSpace";
             this.btnBackSpace.Size = new System.Drawing.Size(70, 70);
             this.btnBackSpace.TabIndex = 11;
@@ -184,7 +187,7 @@ namespace Calculator
             // btnPlus
             // 
             this.btnPlus.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnPlus.Location = new System.Drawing.Point(240, 328);
+            this.btnPlus.Location = new System.Drawing.Point(240, 427);
             this.btnPlus.Name = "btnPlus";
             this.btnPlus.Size = new System.Drawing.Size(70, 70);
             this.btnPlus.TabIndex = 12;
@@ -195,7 +198,7 @@ namespace Calculator
             // btnMinus
             // 
             this.btnMinus.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnMinus.Location = new System.Drawing.Point(240, 404);
+            this.btnMinus.Location = new System.Drawing.Point(240, 503);
             this.btnMinus.Name = "btnMinus";
             this.btnMinus.Size = new System.Drawing.Size(70, 70);
             this.btnMinus.TabIndex = 13;
@@ -206,7 +209,7 @@ namespace Calculator
             // btnEqual
             // 
             this.btnEqual.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnEqual.Location = new System.Drawing.Point(240, 480);
+            this.btnEqual.Location = new System.Drawing.Point(240, 579);
             this.btnEqual.Name = "btnEqual";
             this.btnEqual.Size = new System.Drawing.Size(70, 70);
             this.btnEqual.TabIndex = 14;
@@ -217,7 +220,7 @@ namespace Calculator
             // btnPnN
             // 
             this.btnPnN.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnPnN.Location = new System.Drawing.Point(12, 480);
+            this.btnPnN.Location = new System.Drawing.Point(12, 579);
             this.btnPnN.Name = "btnPnN";
             this.btnPnN.Size = new System.Drawing.Size(70, 70);
             this.btnPnN.TabIndex = 15;
@@ -229,11 +232,11 @@ namespace Calculator
             // 
             this.txtResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtResult.Enabled = false;
-            this.txtResult.Font = new System.Drawing.Font("굴림", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtResult.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtResult.Location = new System.Drawing.Point(12, 124);
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
-            this.txtResult.Size = new System.Drawing.Size(302, 43);
+            this.txtResult.Size = new System.Drawing.Size(302, 32);
             this.txtResult.TabIndex = 16;
             this.txtResult.Text = "0";
             this.txtResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -251,11 +254,47 @@ namespace Calculator
             this.txtHistory.TabIndex = 17;
             this.txtHistory.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // btnMultiply
+            // 
+            this.btnMultiply.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnMultiply.Location = new System.Drawing.Point(240, 351);
+            this.btnMultiply.Name = "btnMultiply";
+            this.btnMultiply.Size = new System.Drawing.Size(70, 70);
+            this.btnMultiply.TabIndex = 18;
+            this.btnMultiply.Text = "×";
+            this.btnMultiply.UseVisualStyleBackColor = true;
+            this.btnMultiply.Click += new System.EventHandler(this.btnOp_click);
+            // 
+            // btnDivide
+            // 
+            this.btnDivide.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnDivide.Location = new System.Drawing.Point(240, 275);
+            this.btnDivide.Name = "btnDivide";
+            this.btnDivide.Size = new System.Drawing.Size(70, 70);
+            this.btnDivide.TabIndex = 19;
+            this.btnDivide.Text = "÷";
+            this.btnDivide.UseVisualStyleBackColor = true;
+            this.btnDivide.Click += new System.EventHandler(this.btnOp_click);
+            // 
+            // btnDot
+            // 
+            this.btnDot.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnDot.Location = new System.Drawing.Point(164, 579);
+            this.btnDot.Name = "btnDot";
+            this.btnDot.Size = new System.Drawing.Size(70, 70);
+            this.btnDot.TabIndex = 20;
+            this.btnDot.Text = ".";
+            this.btnDot.UseVisualStyleBackColor = true;
+            this.btnDot.Click += new System.EventHandler(this.btnDot_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 561);
+            this.ClientSize = new System.Drawing.Size(330, 663);
+            this.Controls.Add(this.btnDot);
+            this.Controls.Add(this.btnDivide);
+            this.Controls.Add(this.btnMultiply);
             this.Controls.Add(this.txtHistory);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.btnPnN);
@@ -301,6 +340,9 @@ namespace Calculator
         private System.Windows.Forms.Button btnPnN;
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.TextBox txtHistory;
+        private System.Windows.Forms.Button btnMultiply;
+        private System.Windows.Forms.Button btnDivide;
+        private System.Windows.Forms.Button btnDot;
     }
 }
 

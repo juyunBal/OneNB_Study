@@ -39,9 +39,9 @@ namespace Calculator
         double max = double.MaxValue;
         double min = double.MinValue;
 
-        double resultcalc = 0.0;
-        double save1 = 0.0;
-        double save2 = 0.0;
+        decimal resultcalc = 0;
+        decimal save1 = 0;
+        decimal save2 = 0;
 
         string op = "";
 
@@ -54,16 +54,20 @@ namespace Calculator
             InitializeComponent();
         }
 
-        private void btnNumber_click (object sender, EventArgs e)
+        private void btnNumber_click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             string txtnumber = btn.Text;
             string txt = txtResult.Text;
-            string totaltxt = txt + txtnumber;
+            string totaltxt;
+            string conversiontxt;
+            decimal totaldouble;
+
+
 
             if (txt == "0" || endclick == BtnClick.Equal || endclick == BtnClick.Op)
             {
-                if(endclick == BtnClick.Equal)
+                if (endclick == BtnClick.Equal)
                 {
                     txtHistory.Text = "";
                 }
@@ -73,9 +77,32 @@ namespace Calculator
             {
                 if (double.TryParse(txt + txtnumber, out double s) == true)
                 {
+                    totaltxt = txt + txtnumber;
+                    totaldouble = decimal.Parse(totaltxt);
+                    conversiontxt = string.Format("{0}", totaldouble);
                     if (min < s && s < max)
                     {
-                        txtResult.Text = string.Format("{0:#,##0}", totaltxt);
+                        if(conversiontxt.Length == 19 && (conversiontxt.Contains(".") || conversiontxt.Contains("-")))
+                        {
+                            endclick = BtnClick.Number;
+                            return;
+                        }
+                        else if (conversiontxt.Length == 17 && (conversiontxt.Contains(".") == false || conversiontxt.Contains("-") == false))
+                        {
+                            endclick = BtnClick.Number;
+                            return;
+                        }
+                        else
+                        {
+                            if (conversiontxt.Contains("0.0"))
+                            {
+                                txtResult.Text += txtnumber;
+                            }
+                            else
+                            {
+                                txtResult.Text = string.Format("{0:#,##0.################}", totaldouble);
+                            }
+                        }
                     }
                 }
             }
@@ -86,7 +113,7 @@ namespace Calculator
         {
             Button btn = sender as Button;
 
-            if(double.TryParse(txtResult.Text, out resultcalc) == false)
+            if(decimal.TryParse(txtResult.Text, out resultcalc) == false)
             {
                 return;
             }
@@ -137,7 +164,7 @@ namespace Calculator
 
         private void btnEqual_Click(object sender, EventArgs e)
         {
-            resultcalc = double.Parse(txtResult.Text);
+            resultcalc = decimal.Parse(txtResult.Text);
             if (endclick != BtnClick.Op)
             {
                 if (useop == UseOp.No && op == "")
@@ -147,7 +174,7 @@ namespace Calculator
                 }
                 else
                 {
-                    if (save2 == 0.0)
+                    if (save2 == 0)
                     {
                         save2 = resultcalc;
                     }
@@ -173,9 +200,9 @@ namespace Calculator
         {
             txtResult.Text = "0";
             txtHistory.Text = "";
-            resultcalc = 0.0;
-            save1 = 0.0;
-            save2 = 0.0;
+            resultcalc = 0;
+            save1 = 0;
+            save2 = 0;
             op = "";
             endclick = BtnClick.None;
             mode = OpMode.None;
@@ -199,13 +226,13 @@ namespace Calculator
 
         private void btnbtnPnN_Click(object sender, EventArgs e)
         {
-            double a = double.Parse(txtResult.Text);
+            decimal a = decimal.Parse(txtResult.Text);
             txtResult.Text = string.Format("{0:#,##0.################}", -1 * a);
         }
 
-        public double Calc(double save1, double save2, OpMode mode)
+        public decimal Calc(decimal save1, decimal save2, OpMode mode)
         {
-            double result;
+            decimal result;
             switch(mode)
             {
                 case OpMode.Plus:

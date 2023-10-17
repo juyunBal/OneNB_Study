@@ -245,12 +245,12 @@ namespace Calculator
             // 
             this.txtHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtHistory.Enabled = false;
-            this.txtHistory.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtHistory.Location = new System.Drawing.Point(12, 54);
+            this.txtHistory.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtHistory.Location = new System.Drawing.Point(12, 68);
             this.txtHistory.Multiline = true;
             this.txtHistory.Name = "txtHistory";
             this.txtHistory.ReadOnly = true;
-            this.txtHistory.Size = new System.Drawing.Size(302, 64);
+            this.txtHistory.Size = new System.Drawing.Size(302, 50);
             this.txtHistory.TabIndex = 17;
             this.txtHistory.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -291,7 +291,7 @@ namespace Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 663);
+            this.ClientSize = new System.Drawing.Size(325, 663);
             this.Controls.Add(this.btnDot);
             this.Controls.Add(this.btnDivide);
             this.Controls.Add(this.btnMultiply);
